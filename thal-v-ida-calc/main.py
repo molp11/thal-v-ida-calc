@@ -1,6 +1,5 @@
 from os.path import join, dirname
 import pandas as pd
-import numpy as np
 from bokeh.io import curdoc
 from bokeh.layouts import row, column, layout
 from bokeh.models import ColumnDataSource, Div
@@ -13,17 +12,17 @@ def callback(attrname, old, new):
     
 def update():
     try:
-        ef = np.round(float(mcv.value) - float(rbc.value) - 5*float(hb.value) - 3.4, 2)
-        rbci = np.round(float(rbc.value), 2)
-        mentzer = np.round(float(mcv.value) / float(rbc.value), 2)
-        rivastava = np.round(float(mch.value) / float(rbc.value), 2)
-        sl = np.round(float(mcv.value)**2 * float(mch.value) / 100, 2)
-        bessman = np.round(float(rdw.value), 2)
-        ricerca = np.round(float(rdw.value) / float(rbc.value), 2)
-        gk = np.round(float(mcv.value)**2 * float(rdw.value) / (100 * float(hb.value)), 2)
-        jayabose = np.round(float(mcv.value) * float(rdw.value) / (float(rbc.value)), 2)
-        sirdah = np.round(float(mcv.value) - float(rbc.value) - 3*float(hb.value), 2)
-        ehsani = np.round(float(mcv.value) - 10*float(rbc.value), 2)
+        ef = round(float(mcv.value) - float(rbc.value) - 5*float(hb.value) - 3.4, 2)
+        rbci = round(float(rbc.value), 2)
+        mentzer = round(float(mcv.value) / float(rbc.value), 2)
+        rivastava = round(float(mch.value) / float(rbc.value), 2)
+        sl = round(float(mcv.value)**2 * float(mch.value) / 100, 2)
+        bessman = round(float(rdw.value), 2)
+        ricerca = round(float(rdw.value) / float(rbc.value), 2)
+        gk = round(float(mcv.value)**2 * float(rdw.value) / (100 * float(hb.value)), 2)
+        jayabose = round(float(mcv.value) * float(rdw.value) / (float(rbc.value)), 2)
+        sirdah = round(float(mcv.value) - float(rbc.value) - 3*float(hb.value), 2)
+        ehsani = round(float(mcv.value) - 10*float(rbc.value), 2)
         values = [ef, mentzer, rivastava, sl, bessman, ricerca, gk, jayabose, sirdah, ehsani]
 
         source.data = pd.DataFrame(dict(index=index,
@@ -53,7 +52,7 @@ index = ['England and Fraser (E&F)', 'Mentzer', 'Srivastava', 'Shine and Lal (S&
                                            'Green and King (G&K)', 'Jayabose (RDW index)', 'Sirdah', 'Ehsani']
 calculation = ['MCV - RBC - (5 Hb) - 3.4', 'MCV / RBC', 'MCH / RBC', 'MCV² x MCH / 100', 'RDW', 'RDW / RBC', 
                                                  'MCV² x RDW / 100 Hb', 'MCV x RDW / RBC', 'MCV - RBC - (3 Hb)', 'MCV - (10 RBC)']
-value = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
+value = ['', '', '', '', '', '', '', '', '', '']
 source = ColumnDataSource(data=dict(index=index,
                                     calculation=calculation,
                                     cutoff = cutoff,
